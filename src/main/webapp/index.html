@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>{{"学习AngularJS 1.x"}}</title>
+    <link type="text/css" rel="stylesheet" href="app/css/style.css">
+
+    <style type="text/css">
+        .strike{
+            text-decoration: line-through;
+        }
+
+        .bold{
+            font-weight: bold;
+        }
+
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller = "firstController">
+<h1>{{"Hello World!"}}</h1>
+    <div n>
+        <h1>{{data.message}}</h1>
+        filter：<p>{{data.message | reverse }}</p>
+        <input type="text" ng-model = "data.message">
+        <input type="button" value="button" ng-click = "onclick()">
+    </div>
+    <br>
+    <input type="text" ng-model = "data.style">
+    <div class="{{data.style}}">实例文本(可输入strike bold red)</div>
+    <br>
+    <div>该内容不会显示</div>
+    <p>{{data.messge}}</p>
+
+
+
+    <hr>
+    <hr>
+
+
+
+    <!--如果使用ng-if来控制元素是否显示，
+    则在不显示的情况下，ng-if中包含的内容，会被全部从HTML中移除掉-->
+    <!-- 如果data.flag == true,则显示此段文字-->
+    是否显示文字： <input type="checkbox" ng-model = "data.flag">
+
+    <div ng-if = "data.flag">
+        <p class="bold">{{data.message}}</p>
+    </div>
+
+    <div ng-hide = "data.flag">
+        <p style="font-size: large" class="strike">{{data.message}}</p>
+    </div>
+
+    <div ng-show = "data.flag">
+        <p class="red">{{data.message}}</p>
+    </div>
+
+
+
+    <hr>
+    <hr>
+
+
+
+    <table>
+        <tr ng-repeat="x in list">
+            <td>{{x.name}}</td>
+
+            <td>
+                <input type="button" value="序列号：{{$index}}"
+                ng-click = "onclick($index)">
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+    <hr>
+
+
+    搜索字段：<input type="text" ng-model = "searchText">
+    <table>
+        <tr ng-repeat = "x in list | filterr:searchText">
+            <td>{{x.name}}</td>
+        </tr>
+    </table>
+
+    搜索多个字段：<input type="text" ng-model = "searchString.name">
+                <input type="text" ng-model = "searchString.last">
+    <table>
+        <tr ng-repeat = "x in list | filter:searchString">
+            <td>{{x.name}}</td>
+            <td>{{x.last}}</td>
+        </tr>
+    </table>
+
+
+    <hr>
+    <hr>
+    <p ng-class =  "{strike:deleted, bold : important , 'has-error': error}">实例文字</p>
+    <input type="checkbox" ng-model = deleted>
+    选中后上方文字将加上删除线（style中加上strike类） <br>
+    <input type="checkbox" ng-model="important">
+    选中后上方文字将变化为粗体（style中加上bold类） <br>
+    <input type="checkbox" ng-model="error">
+    选中后上方文字将变红，背景变黄（style中加上has-error类）
+
+
+    <hr><hr>
+    <input type="button" value="开始动画" ng-click = "style='animate'"><br>
+
+    <input type="button" value="恢复状态" ng-click = "style=''"><br>
+
+    <span class="base-class" ng-class = "style">实例文本</span>
+
+
+
+<script type="text/JavaScript" src="bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="app/test01/test01.js"></script>
+</body>
+</html>
