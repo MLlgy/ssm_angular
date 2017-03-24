@@ -53,6 +53,28 @@ app.controller("firstController",function ($scope) {
     error : false
   }
 
+  /**
+   * ng-option
+   */
+// 将数组作为参数传入
+  $scope.colors = [
+    {name:'黑色',color : 'black',type: "1",disabled: false},
+    {name: '白色', color:'white' ,type: "2"},
+    {name: '红色', color:'red',type: "1",disabled: false },
+    {name: '蓝色', color:'blue' ,type: "1"},
+    {name: '黄色', color:'yellow',type: "3",disabled: true}
+  ];
+  // $scope.colorChosen = $scope.colors[0];
+
+  // 将对象作为参数传入
+  $scope.countries = {
+    CN: '中国China',
+    US: '美国United States',
+    UK: '英国United Kingdom',
+    GR: '德国Germany'
+  };
+  $scope.country = "CN"
+
 })
 /**
  * 过滤器

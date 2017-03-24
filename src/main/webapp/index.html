@@ -107,7 +107,6 @@
     <input type="checkbox" ng-model="error">
     选中后上方文字将变红，背景变黄（style中加上has-error类）
 
-
     <hr><hr>
     <input type="button" value="开始动画" ng-click = "style='animate'"><br>
 
@@ -115,9 +114,39 @@
 
     <span class="base-class" ng-class = "style">实例文本</span>
 
+    <hr><hr>
+    <label>选择一个颜色
+        <select  ng-init = "colorChosen = colors[0]"  ng-model = "colorChosen"
+                 ng-options = "color.name group by color.type disable when color.disabled for color in colors">
+            <!--<option value="">&#45;&#45;请选择一个颜色&#45;&#45;</option>-->
+        </select>
+    </label>
+    <br>
+    当前选中的颜色： {{colorChosen.name}}
+    <div style="border:solid 1px black; height:20px"
+        ng-style="{'background-color':colorChosen.color}">
+    </div>
 
+
+    <hr><hr>
+
+    <label>选择一个国家（有空选项）:
+        <select ng-model="country" ng-options="k as v for (k, v) in countries">
+            <option value="">-- 选择一个国家 --</option>
+        </select>
+    </label>
+    <br>
+
+当前选中的国家: {{ country }}
+
+
+<div ng-controller="DirectiveController">
+    <people></people>
+</div>
 
 <script type="text/JavaScript" src="bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="app/test01/test01.js"></script>
+<script type="text/javascript" src="app/test01/test02_directive.js"></script>
+<script type="text/javascript" src="app/test01/test02_directive01.js"></script>
 </body>
 </html>
