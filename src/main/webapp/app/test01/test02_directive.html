@@ -5,24 +5,19 @@
     <title>Directive</title>
 </head>
 <body>
-<!--<div ng-controller="DirectiveController">-->
-    <!--<people-list></people-list>-->
-<!--</div>-->
 
-<!--<div ng-controller = "MutiPeopleController">-->
-    <!--&lt;!&ndash;<div muti-people info = "harry"></div>&ndash;&gt;-->
-    <!--{{ peopleList | json}}-->
-    <!--<span ng-repeat="person in peopleList">-->
-        <!--<div muti-people info="person"></div>-->
-    <!--</span>-->
-<!--</div>-->
-
-<div ng-controller = "ClickController">
-    <div fun-directive btn-click="clickBtnCallback(message)"></div>
+<div ng-controller = "templateUrlController">
+    <div template-url-test></div>
 </div>
+
+<script type="text/ng-template" id = "part.html">
+    <h1>通过ng-template封装的part.html</h1>
+    <p>这里是part.html中的内容</p>
+</script>
 <script type="text/JavaScript" src="../../bower_components/angular/angular.js"></script>
 <script type="text/javascript" src="test02_directive.js"></script>
 <script type="text/javascript" src="test02_directive01.js"></script>
 <script type="text/javascript" src="test02_directive02.js"></script>
+<script type="text/javascript" src="test03_templateURL.js"></script>
 </body>
 </html>
